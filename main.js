@@ -11,18 +11,19 @@ const inputEstado = document.getElementById("js-input-estado");
 
 function buscarCep() {
   if (inputCep.value != "") {
-    fetch(`https://viacep.com.br/ws/${inputCep.value}/json/`)
-      .then((response) => response.json())
-      .then((json) => {
-        console.log(json);
-        inputBairro.value = json.bairro;
-        inputCepDado.value = json.cep;
-        inputLogradouro.value = json.logradouro;
-        inputEstado.value = json.uf;
+    axios({
+      method: "GET",
+      url: `https://viacep.com.br/ws/${inputCep.value}/json/`,
+    }).then((response) => {
+      let data = response.data;
+      inputBairro.value = data.bairro;
+      inputCepDado.value = data.cep;
+      inputLogradouro.value = data.logradouro;
+      inputEstado.value = data.uf;
 
-        areaDados.style.display = "block";
-        msgError.style.display = "none";
-      });
+      areaDados.style.display = "block";
+      msgError.style.display = "none";
+    });
   } else {
     inputBairro.value = "";
     inputCepDado.value = "";
