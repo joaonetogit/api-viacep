@@ -25,12 +25,12 @@ function buscarCep() {
       msgError.style.display = "none";
     });
   } else {
+    areaDados.style.display = "none";
+    msgError.style.display = "block";
+    inputEstado.value = "";
     inputBairro.value = "";
     inputCepDado.value = "";
     inputLogradouro.value = "";
-    inputEstado.value = "";
-    areaDados.style.display = "none";
-    msgError.style.display = "block";
   }
 }
 
