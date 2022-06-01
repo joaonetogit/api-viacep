@@ -40,10 +40,16 @@ function clickEnter(event) {
   }
 }
 
+inputCep.oninput = function () {
+  if (this.value.length > 8) {
+    this.value = this.value.slice(0, 8);
+  }
+};
+
 if (btnCep) {
   btnCep.addEventListener("click", buscarCep);
 }
 
 if (inputCep) {
-  inputCep.addEventListener("keyup", buscarCep);
+  inputCep.addEventListener("keyup", clickEnter);
 }
