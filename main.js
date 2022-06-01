@@ -34,6 +34,16 @@ function buscarCep() {
   }
 }
 
+function clickEnter(event) {
+  if (event.code === "Enter") {
+    buscarCep();
+  }
+}
+
 if (btnCep) {
   btnCep.addEventListener("click", buscarCep);
+}
+
+if (inputCep) {
+  inputCep.addEventListener("keyup", buscarCep);
 }
